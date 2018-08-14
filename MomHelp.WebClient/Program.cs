@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Blazor.Hosting;
 
-namespace MomHelp.WebClient2
+namespace MomHelp.WebClient
 {
     public class Program
     {

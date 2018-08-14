@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Blazor.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MomHelp.WebClient2
+namespace MomHelp.WebClient
 {
     public class Startup
     {
