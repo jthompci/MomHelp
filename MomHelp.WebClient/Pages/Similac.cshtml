@@ -1,0 +1,55 @@
+﻿@page "/similac"
+
+@functions {
+const double teaspoonPerCalorie = 0.09375;
+const int BreastMilkCaloriesPerOunce = 20;
+bool RoundUpToNearestQuarterOz = true;
+int WaterOz = 0;
+int BreastMilkOz = 0;
+int TargetCaloriesPerOz = 0;
+int TotalOz => WaterOz + BreastMilkOz;
+int TotalCalories => TargetCaloriesPerOz * (TotalOz);
+double TspFormula => (TargetCaloriesPerOz * teaspoonPerCalorie * WaterOz) + ((TargetCaloriesPerOz - BreastMilkCaloriesPerOunce) * teaspoonPerCalorie * BreastMilkOz);
+string TspFormulaDisplay => CalculateFormulaDisplay(TspFormula, RoundUpToNearestQuarterOz);
+
+string CalculateFormulaDisplay(double tspFormula, bool roundUp)
+{
+    if (tspFormula <= 0) return "";
+    if (!roundUp) return tspFormula.ToString();
+    var display = "";
+    var whole = Math.Truncate(tspFormula);
+    var part = tspFormula - whole;
+
+    if (whole > 0)
+    {
+        display = whole.ToString();
+    }
+
+    if (part > .75)
+        display = $"{whole + 1}";
+    else if (part > .5)
+        display += " 3/4";
+    else if (part > .25)
+        display += " 1/2";
+    else if (part > 0)
+        display += " 1/4";
+
+    return display.Trim();
+}
+
+}
+
+<h1>Similac Alimentum calorie calculator</h1>
+
+<table class="table">
+    <tr><td>Oz water(*):</td><td><input type="number" bind="@WaterOz" /></td></tr>
+    <tr><td>Oz milk:*</td><td><input type="number" bind="@BreastMilkOz" /></td></tr>
+    <tr><td>Cals/oz:*</td><td><input type="number" bind="@TargetCaloriesPerOz" /></td></tr>
+    <tr><td>Total Oz:</td><td><input type="text" readonly="readonly" value="@TotalOz" /></td></tr>
+    <tr><td>Total Cals:</td><td><input type="text" readonly="readonly" value="@TotalCalories" /></td></tr>
+    <tr><td>Tsp of Formula:</td><td><input type="text" readonly="readonly" value="@TspFormulaDisplay" /></td></tr>
+    <tr><td>Nearest 1/4 Oz.?**</td><td><input type="checkbox" bind="@RoundUpToNearestQuarterOz" /></td></tr>
+</table>
+
+<div>* - Required</div>
+<div>** - Rounds up</div>
