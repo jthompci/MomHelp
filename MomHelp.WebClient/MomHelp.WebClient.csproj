@@ -13,32 +13,4 @@
     <DotNetCliToolReference Include="Microsoft.AspNetCore.Blazor.Cli" Version="0.5.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Pages\Index.cshtml">
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      <Generator>MSBuild:BlazorGenerateDeclaration</Generator>
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Pages\Similac.cshtml">
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      <Generator>MSBuild:BlazorGenerateDeclaration</Generator>
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Pages\_ViewImports.cshtml">
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      <Generator>MSBuild:BlazorGenerateDeclaration</Generator>
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Shared\MainLayout.cshtml">
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      <Generator>MSBuild:BlazorGenerateDeclaration</Generator>
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Shared\NavMenu.cshtml">
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-      <Generator>MSBuild:BlazorGenerateDeclaration</Generator>
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-  </ItemGroup>
-
 </Project>
